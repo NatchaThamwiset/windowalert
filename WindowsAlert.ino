@@ -6,9 +6,7 @@
 
 int var;
 void setup() {
-  pinMode(33, OUTPUT);
   pinMode(32, INPUT);
-
   Serial.begin(115200); Serial.println();
   Serial.println(LINE.getVersion());
   WiFi.begin(SSID, PASSWORD);
@@ -17,8 +15,6 @@ void setup() {
   Serial.printf("\nWiFi connected\nIP : ");
   Serial.println(WiFi.localIP());  
   LINE.setToken(LINE_TOKEN);
-
-  digitalWrite(33, HIGH);
 }
 
 void loop() {
@@ -27,9 +23,6 @@ void loop() {
 
   if(var == 0){
     LINE.notify("ตรวจพบการเปิดหน้าต่าง ตรวจสอบโดยด่วน");
-    digitalWrite(33, LOW);
-  }else{
-    digitalWrite(33, HIGH);
   }
   delay(3500);
 }
